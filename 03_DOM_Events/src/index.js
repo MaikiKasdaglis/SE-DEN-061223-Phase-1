@@ -1,4 +1,7 @@
 //BookStore data
+document.addEventListener('DOMContentLoaded', ()=> {
+
+
 const bookStore = {
     location: "Seattle",
     address:'333 st ne Seattle wa 99999',
@@ -141,6 +144,8 @@ const renderBookCard = (cardData) => {
     img.src = cardData.imageUrl
     li.className = 'list-li'
 
+    btn.addEventListener('click', () => li.remove())
+
     li.append(h3,pAuthor,pPrice,img,btn)
     document.querySelector('#book-list').append(li)
 }
@@ -150,3 +155,19 @@ console.log(renderHeader())
 console.log(renderFooter())
 bookStore.inventory.forEach(renderBookCard)
 
+function handleForm(e) {
+    e.preventDefault() 
+    const book = {
+        title: e.target.title.value,
+        author: e.target.author.value,
+        price: e.target.price.value, 
+        imageUrl: e.target.imageUrl.value, 
+        inventory: e.target.inventory.value,
+        reviews: []
+
+    }
+    renderBookCard(book)
+}
+document.querySelector('#book-form').addEventListener('submit', handleForm)
+
+})
