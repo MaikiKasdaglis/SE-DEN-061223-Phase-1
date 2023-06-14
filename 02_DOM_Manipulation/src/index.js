@@ -106,12 +106,52 @@ renderFooter()
 
 
 
+// bookStore.inventory.forEach((cardData) => {
+//     const li = document.createElement('li')
+//     const h3 = document.createElement('h3')
+//     const pAuthor = document.createElement('p')
+//     const pPrice = document.createElement('p')
+//     const img = document.createElement('img')
+
+//     h3.textContent = cardData.title 
+//     pAuthor.textContent = cardData.author
+//     pPrice.textContent = cardData.price 
+//     img.src = cardData.imageUrl
+//     li.className = "list-li"
+
+//     li.append(h3, pAuthor, pPrice, img)
+//     document.querySelector('#book-list').append(li)
+// })
+
+
 
 //* Refactor to make the anonymous callback its own function so it can be reused later. 
 
+const renderBookCard = (cardData) => {
+    const li = document.createElement('li')
+    const h3 = document.createElement('h3')
+    const pAuthor = document.createElement('p')
+    const pPrice = document.createElement('p')
+    const img = document.createElement('img')
 
+    debugger;
+
+    h3.textContent = cardData.title 
+    pAuthor.textContent = cardData.author
+    pPrice.textContent = cardData.price 
+    img.src = cardData.imageUrl
+    li.className = "list-li"
+
+
+    li.append(h3, pAuthor, pPrice, img)
+    document.querySelector('#book-list').append(li)
+
+}
 
 //Organize function calls
+renderHeader()
+renderFooter()
+bookStore.inventory.forEach(renderBookCard)
 
 
 
